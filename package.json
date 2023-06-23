@@ -1,0 +1,20 @@
+{
+  "name": "esmolina-file-manager",
+  "version": "1.0.0",
+  "description": "RSSchool task",
+  "type": "module",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:esmolina/file-manager.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "esmolina",
+  "license": "ISC",
+  "bugs": {
+  },
+  "homepage": "https://github.com/esmolina?tab=repositories"
+}
