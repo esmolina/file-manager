@@ -4,10 +4,11 @@
   "description": "RSSchool task",
   "type": "module",
   "scripts": {
+    "start": "node src/app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:esmolina/file-manager.git"
+    "url": "git+https://git@github.com:esmolina/file-manager.git"
   },
   "keywords": [
     "nodejs"
