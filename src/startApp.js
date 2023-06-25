@@ -4,6 +4,7 @@ import { getRelativeDirname } from "./utils/getDirname.js";
 import { getWorkingDirectoryPath } from "./utils/getWorkingDirectoryPath.js";
 import { sayHi, sayGoodbye } from "./utils/sayHiGoodbye.js";
 import { executeUsersCommand } from "./utils/executeUsersCommand.js";
+import { parseReadlineInput } from "./utils/parseReadlineInput.js";
 import { stateStorage} from "./storage.js";
 
 export const readline = createInterface({
@@ -19,6 +20,7 @@ const startApp = () => {
   sayHi();
   readline.on('line', (input) => {
     stateStorage.currentCommand = input;
+    parseReadlineInput(input);
     executeUsersCommand();
   });
 
