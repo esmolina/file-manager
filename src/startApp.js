@@ -5,6 +5,8 @@ import { getWorkingDirectoryPath } from "./utils/getWorkingDirectoryPath.js";
 import { sayHi, sayGoodbye } from "./utils/sayHiGoodbye.js";
 import { executeUsersCommand } from "./utils/executeUsersCommand.js";
 import { parseReadlineInput } from "./utils/parseReadlineInput.js";
+import { showCurrentPath } from "./utils/showCurrentPath.js";
+import {stateStorage} from "./storage.js";
 
 export const readline = createInterface({
   input: stdin,
@@ -20,15 +22,12 @@ const startApp = () => {
   readline.on('line', (input) => {
     parseReadlineInput(input);
     executeUsersCommand();
+    if (stateStorage.currentCommand !== '.exit') { showCurrentPath()};
   });
 
   readline.on('SIGINT', () => {
     sayGoodbye();
   });
-
-  //ToDo
-  // outputChannel.write(`You are currently in ${homedir}\n`);
-
 }
 
 startApp();
