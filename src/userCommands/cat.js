@@ -7,6 +7,7 @@ import {stateStorage} from "../storage.js";
 const outputChannel = stdout;
 const errorMessage = `\nOperation failed`;
 const errorTypeMessage = 'There is no such file';
+const supportedEncodings = ['utf8', 'ascii', 'utf16le', 'ucs2', 'base64', 'latin1', 'binary', 'hex'];
 
 export async function executeCat() {
   const filePath = stateStorage.currentArgs.join('');
@@ -17,9 +18,10 @@ export async function executeCat() {
 
     if (fileStat.isFile()) {
       const readStream = createReadStream(absolutePath);
+      let fileData = '';
 
-      readStream.on('data', (fileContent) => {
-        outputChannel.write(`${fileContent}\n`);
+      readStream.on('data', (chunk) => {
+        fileData += chunk;
       });
 
       readStream.on('error', (error) => {
@@ -31,6 +33,13 @@ export async function executeCat() {
           resolve();
         });
       });
+
+      const detectedEncoding = getEncoding(fileData);
+      if (detectedEncoding) {
+        outputChannel.write(`Detected encoding: ${detectedEncoding}\n`);
+      }
+
+      outputChannel.write(`${fileData}\n`);
     } else {
       console.log(errorMessage);
       console.log(errorTypeMessage);
@@ -39,4 +48,14 @@ export async function executeCat() {
     console.log(errorMessage);
     console.log(errorTypeMessage);
   }
+}
+
+function getEncoding(fileData) {
+  for (let encoding of supportedEncodings) {
+    try {
+      fileData.toString(encoding);
+      return encoding;
+    } catch (error) {}
+  }
+  return null;
 }
