@@ -7,6 +7,7 @@ import {executeCat} from "../userCommands/cat.js";
 import {executeAdd} from "../userCommands/add.js";
 import {executeRn} from "../userCommands/rn.js";
 import {readline} from "../startApp.js";
+import {executeCp} from "../userCommands/cp.js";
 
 const invalidMessage = 'Invalid input';
 
@@ -45,6 +46,12 @@ export async function executeUsersCommand (){
     case 'rn':
       if (haveArgs && isTwoArgs) {
         await executeRn();
+      }
+      else { console.log(invalidMessage)}
+      break;
+    case 'cp':
+      if (haveArgs && isTwoArgs) {
+        await executeCp();
       }
       else { console.log(invalidMessage)}
       break;

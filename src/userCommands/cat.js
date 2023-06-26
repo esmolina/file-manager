@@ -3,7 +3,7 @@ import {getAbsolutePath} from "../utils/getAbsolutePath.js";
 import {readline} from "../startApp.js";
 import {stateStorage} from "../storage.js";
 
-const errorMessage = '\nOperation failed';
+const errorMessage = `\nOperation failed`;
 const errorTypeMessage = 'There is no such file';
 
 export async function executeCat () {

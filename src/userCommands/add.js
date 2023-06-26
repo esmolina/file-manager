@@ -2,7 +2,7 @@ import { writeFile } from 'fs/promises';
 import path from 'node:path';
 import { stateStorage } from "../storage.js";
 
-const errorMessage = '\nOperation failed';
+const errorMessage = `\nOperation failed`;
 const errorTypeMessage = 'Such a file already exists';
 
 export async function executeAdd (){

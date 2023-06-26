@@ -3,9 +3,9 @@ import { stat, rename } from 'fs/promises';
 import { stateStorage } from "../storage.js";
 import {getAbsolutePath} from "../utils/getAbsolutePath.js";
 
-const errorMessage = '\nOperation failed';
-const errorTypeMessageOldEnoent = 'The source file does not exist';
-const errorTypeMessageNewExist = 'The file with the suggested name already exists in this folder';
+const errorMessage = `\nOperation failed`;
+const errorTypeMessageOldEnoent = `\nThe source file does not exist`;
+const errorTypeMessageNewExist = `\nThe file with the suggested name already exists in this folder`;
 
 export async function executeRn(){
   const oldFilePathReceived = stateStorage.currentArgs[0];
@@ -44,6 +44,6 @@ export async function executeRn(){
     console.log(`The file at the address ${oldFilePath} was successfully renamed to ${newFileName}`);
   } catch (error) {
     console.log(errorMessage);
-    console.log('Error occurred while renaming the file.');
+    console.log('Error occurred while renaming the file');
   }
 }
