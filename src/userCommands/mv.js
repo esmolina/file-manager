@@ -90,8 +90,7 @@ export const executeMv = async () => {
 
     targetStream.on('finish', async () => {
       try {
-        await unlink(sourceFilePath); // Remove the source file
-        console.log(successMessage);
+        await unlink(sourceFilePath);
       } catch (error) {
         console.log(errorMessage);
         console.log(`Error occurred while removing the source file`);
