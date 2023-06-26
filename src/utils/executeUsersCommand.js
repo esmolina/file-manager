@@ -10,6 +10,7 @@ import {executeCp} from "../userCommands/cp.js";
 import {executeMv} from "../userCommands/mv.js";
 import {executeRm} from "../userCommands/rm.js";
 import {executeOs} from "../userCommands/os.js";
+import {executeHash} from "../userCommands/hash.js";
 
 const invalidMessage = 'Invalid input';
 
@@ -72,6 +73,12 @@ export async function executeUsersCommand (){
     case 'os':
       if (haveArgs && isNoMoreOneArg) {
         await executeOs();
+      }
+      else { console.log(invalidMessage)}
+      break;
+    case 'hash':
+      if (haveArgs && isNoMoreOneArg) {
+        await executeHash();
       }
       else { console.log(invalidMessage)}
       break;
