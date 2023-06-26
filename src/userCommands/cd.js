@@ -6,7 +6,8 @@ const errorMessage = '\nOperation failed';
 const errorTypeMessage = 'There is no such folder';
 
 export async function executeCd () {
-  const absolutePath = getAbsolutePath();
+  const path = stateStorage.currentArgs.join('');
+  const absolutePath = getAbsolutePath(path);
   try {
     const pathStat = await stat(absolutePath);
     if (pathStat.isDirectory()) {

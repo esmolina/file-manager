@@ -4,8 +4,7 @@ import { stateStorage } from "../storage.js";
 import {fixEnteredPathsEnd} from "./fixEnteredPathsEnd.js";
 import {checkIsRelativePath} from "./checkIsRelativePath.js";
 
-export const getAbsolutePath = () => {
-  const path = stateStorage.currentArgs.join('');
+export const getAbsolutePath = (path) => {
   const currentPath = stateStorage.currentUserPath.toString();
   //if the user has put an extra slash at the end of the line
   const fixedPath = fixEnteredPathsEnd(path, sep);
