@@ -16,8 +16,15 @@ async function startApp () {
   readline.on('line', async (input) => {
     parseReadlineInput(input);
     await executeUsersCommand();
-    if (stateStorage.currentCommand !== '.exit') { await showCurrentPath()};
+    if (stateStorage.currentCommand !== '.exit') {
+      await showCurrentPath();
+      readline.setPrompt('Enter a command: ');
+      readline.prompt();
+    };
   });
+
+  readline.setPrompt('Enter a command: ');
+  readline.prompt();
 
   readline.on('SIGINT', () => {
     sayGoodbye();
