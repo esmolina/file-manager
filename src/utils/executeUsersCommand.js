@@ -3,6 +3,7 @@ import {executeExit} from "../userCommands/exit.js";
 import {executeUp} from "../userCommands/up.js";
 import {executeCd} from "../userCommands/cd.js";
 import {executeLs} from "../userCommands/ls.js";
+import {executeCat} from "../userCommands/cat.js";
 
 const invalidMessage = 'Invalid input';
 
@@ -27,6 +28,10 @@ export async function executeUsersCommand (){
       break;
     case 'ls':
       if (!haveArgs) { await executeLs() }
+      else { console.log(invalidMessage)}
+      break;
+    case 'cat':
+      if (haveArgs && isNoMoreOneArg) { await executeCat() }
       else { console.log(invalidMessage)}
       break;
     default:
