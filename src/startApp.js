@@ -17,12 +17,12 @@ export const readline = createInterface({
 const __dirname = getRelativeDirname(import.meta.url);
 const currentDirectory = getWorkingDirectoryPath();
 
-const startApp = () => {
+async function startApp () {
   sayHi();
-  readline.on('line', (input) => {
+  readline.on('line', async (input) => {
     parseReadlineInput(input);
-    executeUsersCommand();
-    if (stateStorage.currentCommand !== '.exit') { showCurrentPath()};
+    await executeUsersCommand();
+    if (stateStorage.currentCommand !== '.exit') { await showCurrentPath()};
   });
 
   readline.on('SIGINT', () => {
@@ -30,4 +30,4 @@ const startApp = () => {
   });
 }
 
-startApp();
+await startApp();
