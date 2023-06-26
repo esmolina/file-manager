@@ -5,7 +5,6 @@ import { getWorkingDirectoryPath } from "./utils/getWorkingDirectoryPath.js";
 import { sayHi, sayGoodbye } from "./utils/sayHiGoodbye.js";
 import { executeUsersCommand } from "./utils/executeUsersCommand.js";
 import { parseReadlineInput } from "./utils/parseReadlineInput.js";
-import { stateStorage} from "./storage.js";
 
 export const readline = createInterface({
   input: stdin,
@@ -19,7 +18,6 @@ const currentDirectory = getWorkingDirectoryPath();
 const startApp = () => {
   sayHi();
   readline.on('line', (input) => {
-    stateStorage.currentCommand = input;
     parseReadlineInput(input);
     executeUsersCommand();
   });
@@ -30,20 +28,7 @@ const startApp = () => {
 
   //ToDo
   // outputChannel.write(`You are currently in ${homedir}\n`);
-  // inputChannel.on('data', enteredSymbols => {
-  //   const userCommand = (`${enteredSymbols}`).trim().toLowerCase();
-  //   // Exit by .exit
-  //   if (userCommand === '.exit') {
-  //     outputChannel.write(`\nThank you for using File Manager, ${userName}, goodbye!\n`);
-  //     process.exit(0);
-  //   }
-  // })
-  //
-  // // Exit by CTRL+C
-  // process.on('SIGINT', () => {
-  //   outputChannel.write(`\nThank you for using File Manager, ${userName}, goodbye!\n`);
-  //   process.exit(0);
-  // });
+
 }
 
 startApp();
