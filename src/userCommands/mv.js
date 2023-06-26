@@ -8,7 +8,6 @@ const errorMessage = `\nOperation failed`;
 const errorTypeMessageSourceFile = `\nThe source file does not exist`;
 const errorTypeMessageTargetDirectory = `\nThe target directory does not exist`;
 const errorTypeMessageTargetFileExist = `\nA file with the same name already exists in the target directory`;
-const successMessage = `\nThe file was successfully moved`;
 
 export const executeMv = async () => {
   const sourceFilePath = stateStorage.currentArgs[0];
