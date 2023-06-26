@@ -1,5 +1,6 @@
 import { stateStorage } from "../storage.js";
-import {sayGoodbye} from "./sayHiGoodbye.js";
+import {executeExit} from "../userCommands/exit.js";
+import {executeUp} from "../userCommands/up.js";
 
 const invalidMessage = 'Invalid input';
 
@@ -10,10 +11,13 @@ export const executeUsersCommand = () => {
 
   switch (userCommand) {
     case '.exit':
-      if (!haveArgs) { sayGoodbye() }
+      if (!haveArgs) { executeExit() }
       else { console.log(invalidMessage)}
       break;
-
+    case 'up':
+      if (!haveArgs) { executeUp() }
+      else { console.log(invalidMessage)}
+      break;
     default:
       console.log(invalidMessage);
       break;
