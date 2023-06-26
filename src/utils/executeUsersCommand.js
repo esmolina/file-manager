@@ -6,10 +6,10 @@ import {executeLs} from "../userCommands/ls.js";
 import {executeCat} from "../userCommands/cat.js";
 import {executeAdd} from "../userCommands/add.js";
 import {executeRn} from "../userCommands/rn.js";
-import {readline} from "../startApp.js";
 import {executeCp} from "../userCommands/cp.js";
 import {executeMv} from "../userCommands/mv.js";
 import {executeRm} from "../userCommands/rm.js";
+import {executeOs} from "../userCommands/os.js";
 
 const invalidMessage = 'Invalid input';
 
@@ -66,6 +66,12 @@ export async function executeUsersCommand (){
     case 'rm':
       if (haveArgs && isNoMoreOneArg) {
         await executeRm();
+      }
+      else { console.log(invalidMessage)}
+      break;
+    case 'os':
+      if (haveArgs && isNoMoreOneArg) {
+        await executeOs();
       }
       else { console.log(invalidMessage)}
       break;

@@ -12,9 +12,16 @@ export const executeUp = () => {
     const posixPathsArray = relativePathsArray.slice(1);
     if (posixPathsArray.length === 1) {
       stateStorage.currentUserPath = sep;
-      return
+      return;
+    }
+  } else {
+    const root = relativePathsArray[0];
+    if (root.length === 2 && root[1] === ':' && relativePathsArray.length === 1) {
+      stateStorage.currentUserPath = root;
+      return;
     }
   }
-    relativePathsArray.pop();
-    stateStorage.currentUserPath = relativePathsArray.join(sep);
+
+  relativePathsArray.pop();
+  stateStorage.currentUserPath = relativePathsArray.join(sep);
 }
