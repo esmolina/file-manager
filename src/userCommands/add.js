@@ -1,4 +1,4 @@
-import { stat, writeFile } from 'fs/promises';
+import { writeFile } from 'fs/promises';
 import path from 'node:path';
 import { stateStorage } from "../storage.js";
 
