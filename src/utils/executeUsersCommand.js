@@ -2,6 +2,7 @@ import { stateStorage } from "../storage.js";
 import {executeExit} from "../userCommands/exit.js";
 import {executeUp} from "../userCommands/up.js";
 import {executeCd} from "../userCommands/cd.js";
+import {executeLs} from "../userCommands/ls.js";
 
 const invalidMessage = 'Invalid input';
 
@@ -22,6 +23,10 @@ export async function executeUsersCommand (){
       break;
     case 'cd':
       if (haveArgs && isNoMoreOneArg) { await executeCd() }
+      else { console.log(invalidMessage)}
+      break;
+    case 'ls':
+      if (!haveArgs) { await executeLs() }
       else { console.log(invalidMessage)}
       break;
     default:

@@ -15,9 +15,6 @@ export async function executeCd () {
   const fixedPath = fixEnteredPathsEnd(path, sep);
   const isRelativePath = checkIsRelativePath(fixedPath);
   const absolutePath = isRelativePath? join(currentPath.toString(), fixedPath) : fixedPath;
-  console.log(fixedPath);
-  console.log(isRelativePath);
-  console.log(absolutePath);
 
   try {
     await access(absolutePath);
